@@ -1,13 +1,3 @@
-<template>
-    <div
-            class="kd-dropdown"
-            @mouseenter="handleMouseenter"
-            @mouseleave="hide"
-    >
-        <slot/>
-    </div>
-</template>
-
 <script>
     import Lang from 'src/mixin/lang.js';
 
@@ -18,9 +8,15 @@
         },
         data() {
             return {
-                isShow: false
+                isShow: false,
+                button: '',
+                menu: ''
             };
         },
+        mounted() {
+
+        },
+
         methods: {
             handleMouseenter() {
                 this.isShow = true;
@@ -31,6 +27,24 @@
             hide() {
                 console.log('1231');
             }
+        },
+        render(h) {
+            let Button, Menu;
+            this.$slots.default.map((item, index) => {
+                if (!item.tag) return;
+                if (item.tag.indexOf('Menu') > -1) {
+                    Menu = item;
+                } else {
+                    Button = item;
+                }
+            });
+
+            return (
+                <div >
+                    { Button }
+                    { Menu }
+                </div>
+            );
         }
     };
 

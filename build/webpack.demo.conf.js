@@ -64,6 +64,10 @@ const webpackConfig = {
                 }
             },
             {
+                test: /\.(jsx?|babel|es6)$/,
+                loader: 'babel-loader'
+            },
+            {
                 test: /\.md$/,
                 loader: [
                     {

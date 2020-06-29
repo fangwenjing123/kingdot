@@ -1,6 +1,5 @@
 <template>
     <div
-            v-if="isShow"
             class="kd-dropdown-menu"
             :style="{top:menuTop}"
     >
